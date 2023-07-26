@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      itemName: {
-        type: Sequelize.STRING
-      },
       checklistId: {
         type: Sequelize.BIGINT
+      },
+      itemName: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

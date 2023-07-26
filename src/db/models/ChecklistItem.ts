@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import connection from "../../config/dbConnect";
+import Checklist from "./Checklist";
 
 interface ChecklistItemAttributes {
 	id?: number,
@@ -16,7 +17,7 @@ export interface ChecklistItemOutput extends Required<ChecklistItemAttributes>{ 
 
 class ChecklistItem extends Model<ChecklistItemAttributes, ChecklistItemInput> implements ChecklistItemAttributes {
 	public id!: number;
-  	public name!: string;
+  	public itemName!: string;
     public checklistId!: number;
 
 	public readonly createdAt!: Date;

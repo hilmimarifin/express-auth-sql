@@ -128,10 +128,10 @@ const UpdateChecklistItem = async(req:Request, res:Response):Promise<Response> =
 			return res.status(404).send(Helper.ResponseData(404, "NotFound", null, null));
 		}
 
-		checklist.name = itemName;
+		checklist.itemName = itemName;
 
 		await checklist.save();
-		return res.status(200).send(Helper.ResponseData(200, "Removed", null, null));
+		return res.status(200).send(Helper.ResponseData(200, "Edited", null, checklist));
 	} catch (error:any) {
 		return res.status(500).send(Helper.ResponseData(500, "", error, null));
 	}
