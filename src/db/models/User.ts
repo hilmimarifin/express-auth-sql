@@ -8,6 +8,7 @@ interface UserAttributes {
     email?: string | null,
     roleId?: number | null,
     password?: string | null,
+    username?: string | null,
     accessToken?: string | null,
     verified?: boolean | null,
     active?: boolean | null,
@@ -25,6 +26,7 @@ class User extends Model<UserAttributes, UserInput> implements UserAttributes {
     public email!: string;
     public roleId!: number;
     public password!: string;
+    public username!: string;
     public accessToken!: string;
     public verified!: boolean;
     public active!: boolean;
@@ -56,6 +58,10 @@ User.init({
     password: {
         type: DataTypes.TEXT,
         allowNull: true
+    },
+    username: {
+        type: DataTypes.TEXT,
+        allowNull: false
     },
     accessToken: {
         type: DataTypes.TEXT,

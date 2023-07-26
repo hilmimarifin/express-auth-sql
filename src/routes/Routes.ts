@@ -9,6 +9,8 @@ import RoleMenuAccessController from "../controllers/RoleMenuAccessController";
 import UserValidation from "../middleware/validation/UserValidation";
 import Authorization from "../middleware/Authorization";
 import MenuValidation from "../middleware/validation/MenuValidation";
+import ChecklistValidation from "../middleware/validation/ChecklistValidation";
+import ChecklistControler from "../controllers/ChecklistControler";
 
 const router = express.Router();
 
@@ -54,4 +56,12 @@ router.get("/role-menu-access/get/all", Authorization.Authenticated, Authorizati
 router.get("/role-menu-access/:id", Authorization.Authenticated, Authorization.AdminRole, RoleMenuAccessController.GetDetail);
 router.patch("/role-menu-access/:id", MenuValidation.CreateRoleMenuAccess, Authorization.Authenticated, Authorization.AdminRole, RoleMenuAccessController.UpdateAccess);
 router.delete("/role-menu-access/:id", Authorization.Authenticated, Authorization.AdminRole, RoleMenuAccessController.SoftDelete);
+
+
+//checklist router
+router.post("/checklist", ChecklistValidation.CreateChecklistValidation, Authorization.Authenticated, ChecklistControler.CreateChecklist);
+router.get("/checklist", Authorization.Authenticated, ChecklistControler.GetAllChecklist);
+router.delete("/checklist/:id", Authorization.Authenticated, ChecklistControler.DeleteChecklist);
+
+
 export default router;
