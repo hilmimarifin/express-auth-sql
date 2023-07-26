@@ -12,13 +12,14 @@ import { verifyGoogleToken } from "../helpers/GoogleHelper";
 
 const Register = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { name, email, password, confirmPassword, roleId } = req.body;
+        const { name, email, password, confirmPassword, roleId, username } = req.body;
 
         const hashed = await PasswordHelper.PasswordHashing(password);
 
         const user = await User.create({
             name,
             email,
+            username,
             password: hashed,
             active: true,
             verified: true,
