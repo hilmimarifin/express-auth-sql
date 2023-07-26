@@ -12,7 +12,7 @@ import { verifyGoogleToken } from "../helpers/GoogleHelper";
 
 const Register = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { name, email, password, confirmPassword, roleId, username } = req.body;
+        const { name, email, password, confirmPassword, username } = req.body;
 
         const hashed = await PasswordHelper.PasswordHashing(password);
 
@@ -23,7 +23,7 @@ const Register = async (req: Request, res: Response): Promise<Response> => {
             password: hashed,
             active: true,
             verified: true,
-            roleId: roleId
+            roleId: 1
         });
 
         return res.status(201).send(Helper.ResponseData(201, "Created", null, user));

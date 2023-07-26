@@ -21,6 +21,9 @@ module.exports = {
       password: {
         type: Sequelize.TEXT
       },
+      username: {
+        type: Sequelize.TEXT
+      },
       accessToken: {
         type: Sequelize.TEXT
       },
