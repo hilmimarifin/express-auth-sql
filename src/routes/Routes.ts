@@ -22,7 +22,7 @@ router.delete("/role/:id", Authorization.Authenticated, RoleController.DeleteRol
 router.get("/role/:id", Authorization.Authenticated, RoleController.GetRoleById);
 
 //user router
-router.post("/user/signup",UserValidation.RegisterValidation, UserController.Register);
+router.post("/user/register",UserValidation.RegisterValidation, UserController.Register);
 router.post("/user/login", UserController.UserLogin);
 router.get("/user/refresh-token", UserController.RefreshToken);
 router.get("/user/current-user", Authorization.Authenticated, UserController.UserDetail);
@@ -62,6 +62,17 @@ router.delete("/role-menu-access/:id", Authorization.Authenticated, Authorizatio
 router.post("/checklist", ChecklistValidation.CreateChecklistValidation, Authorization.Authenticated, ChecklistControler.CreateChecklist);
 router.get("/checklist", Authorization.Authenticated, ChecklistControler.GetAllChecklist);
 router.delete("/checklist/:id", Authorization.Authenticated, ChecklistControler.DeleteChecklist);
+
+//checklist item
+router.get("/checklist/:checklistId/item", Authorization.Authenticated, ChecklistControler.GetChecklistItemsbyChecklistId);
+router.post("/checklist/:checklistId/item", Authorization.Authenticated, ChecklistControler.CreateChecklistItem);
+router.get("/checklist/:checklistId/item/:checklistItemId", Authorization.Authenticated, ChecklistControler.GetDetailChecklistItemsbyChecklistId);
+router.delete("/checklist/:checklistId/item/:checklistItemId", Authorization.Authenticated, ChecklistControler.DeleteChecklistItem);
+router.put("/checklist/:checklistId/item/:checklistItemId", Authorization.Authenticated, ChecklistControler.UpdateChecklistItem);
+
+
+
+
 
 
 export default router;
